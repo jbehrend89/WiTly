@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <title>Women in Tech</title>
+        <meta name="description" content="Showcasingwomen in tech."/>
+        <meta name="author" content="your name" />
+        <link rel="stylesheet" href="/stylesheets/styles.css"/>
+    </head>
+    <body>
+        <h1>Women in Tech</h1>
+
+<% people.forEach(person => { %>
+    <a href="/profile/<%= person.id %>"><p><%= person.name%></p></a>
+<% }) %>
+    </body>
+</html>
