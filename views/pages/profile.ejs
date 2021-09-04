@@ -9,10 +9,8 @@
         <link rel="stylesheet" href="/stylesheets/styles.css"/>
     </head>
     <body>
-        <h1>Women in Tech</h1>
-
-<% people.forEach(person => { %>
-    <a href="/profile/<%= person.id %>"><p><%= person.name%></p></a>
-<% }) %>
+        <%- include("../partials/_head") -%>
+        <h1><%= person.name %></h1>
+        <%- include("../partials/_footer") -%>
     </body>
 </html>
