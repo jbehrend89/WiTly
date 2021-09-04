@@ -1,0 +1,22 @@
+{
+  "name": "witly",
+  "version": "1.0.0",
+  "description": "She Codes Project WiTly",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbehrend89/WiTly.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbehrend89/WiTly/issues"
+  },
+  "homepage": "https://github.com/jbehrend89/WiTly#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
