@@ -12,6 +12,11 @@
         <%- include("../partials/_head") -%>
         <h1>Women in Tech</h1>
 
+        <form id="search-form" action="/" method="GET">
+        <input name="name" id="name-query" type="text" />
+        <input type="submit" value="Search" />
+        </form>
+
         <% people.forEach(person => { %>
         <a href="/profile/<%= person.id %>"><p><%= person.name%></p></a>
         <% }) %>
