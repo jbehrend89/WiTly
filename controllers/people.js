@@ -9,13 +9,13 @@ export const fetchPeopleController = async function (req,res) {
     res.render('index', { people: peopleData })
     } else {
 
-    res.send("Not authroiZed.")
+    res.send("Not authroized.")
     }
 }
 
 
 export const fetchPersonController = function (req,res) {
     const personId = req.params.id;
-    const personData = fetchPerson(id);
+    const personData = fetchPerson(personId);
     res.render('profile', { person: personData })
 }

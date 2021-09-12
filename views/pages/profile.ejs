@@ -10,7 +10,9 @@
     </head>
     <body>
         <%- include("../partials/_head") -%>
-        <h1><%= person.name %></h1>
+        <% if (person) { %>
+            <h1><%= person.name %></h1>
+          <% } %>
         <%- include("../partials/_footer") -%>
     </body>
 </html>
