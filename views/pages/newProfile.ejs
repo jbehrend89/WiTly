@@ -1,0 +1,12 @@
+<%- include("../partials/_head") -%>
+<h1>Create a new profile</h1>
+
+<form action="/profile" method="POST" enctype="multipart/form-data">
+    <input name="name" type="text" />
+    <input name="tagline" type="text" />
+    <textarea name="bio"></textarea>
+    <input name="photo" type="file" />
+    <input type="submit" value="Create" />
+</form>
+
+<%- include("../partials/_footer") -%>

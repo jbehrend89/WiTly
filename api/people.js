@@ -1,4 +1,3 @@
-import { peopleData } from '../fixtures/people.js';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 
@@ -24,6 +23,7 @@ export const fetchPeople = async function (name) {
 };
 
 export const fetchPerson = function (id) {
+    let peopleData = fetchPeople()
     let person;
     peopleData.forEach((personData) => {
         if (personData.id == id) {
@@ -32,3 +32,14 @@ export const fetchPerson = function (id) {
     });
     return person;
 };
+
+export const createPerson = async function(FormData) {
+    const response = await fetch(`${API_URL}people`, {
+        method: 'POST',
+        body: FormData,
+        headers: {
+            Authorization: `Token ${API_KEY}`,
+        }
+    });
+    return response.json();
+}
