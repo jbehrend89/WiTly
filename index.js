@@ -1,5 +1,6 @@
 import express from 'express';
-import peopleRouter from './routes/people.js'
+import peopleRouter from './routes/people.js';
+import userRouter from './routes/users.js';
 
 const app = express();
 app.use(express.static('static'));
@@ -28,4 +29,5 @@ app.listen(3000, () => {
 //     res.render('profile', { person: person });
 // });
 
-app.use('/', peopleRouter)
+app.use('/', peopleRouter);
+app.use('/', userRouter);
