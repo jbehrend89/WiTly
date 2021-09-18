@@ -6,9 +6,21 @@ import FormData from 'form-data';
 export const fetchPeopleController = async function (req,res) {
     const name = req.query.name;
     console.log(req.query)
+    let user;
+    if (req.isAuthenticated()) {
+        user = {
+            id: req.user.rows[0].id,
+            username: req.user.rows[0].username,
+        };
+    } else {
+        user = null;
+    }
     const peopleData = await fetchPeople(name);
     if (peopleData) {
-    res.render('index', { people: peopleData })
+        res.render('index', { 
+            people: peopleData,
+            user: user, 
+        });
     } else {
 
     res.send("Not authroized.")

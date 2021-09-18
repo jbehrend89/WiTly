@@ -9,3 +9,6 @@ export const createUserController = async function (req, res) {
     const user = await createUser(userData);
     return res.render('login');
 };
+
+export const loginFormController = function (req, res) {
+    return res.render('login');};
