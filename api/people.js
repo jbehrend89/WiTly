@@ -22,14 +22,25 @@ export const fetchPeople = async function (name) {
     return response.json();
 };
 
-export const fetchPerson = function (id) {
-    let peopleData = fetchPeople()
-    let person;
-    peopleData.forEach((personData) => {
-        if (personData.id == id) {
-            person = personData;
-        }
+export const fetchPerson = async function (id) {
+    // let peopleData = fetchPeople()
+    // console.log(peopleData)
+    // let person;
+    // peopleData.forEach((personData) => {
+    //     if (personData.id == id) {
+    //         person = personData;
+    //     }
+    // });
+    // return person;
+    const response = await fetch(`${API_URL}people/${id}`, {
+        headers: {
+            Authorization: `Token ${API_KEY}`,
+        },
     });
+    if (response.status == 401) {
+        return;
+    }
+    let person = response.json()
     return person;
 };
 

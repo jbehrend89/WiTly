@@ -1,5 +1,5 @@
-import fs from 'fs';
 import { fetchPerson, fetchPeople, createPerson } from "../api/people.js";
+import fs from 'fs';
 import FormData from 'form-data';
 
 
@@ -28,10 +28,18 @@ export const fetchPeopleController = async function (req,res) {
 }
 
 
-export const fetchPersonController = function (req,res) {
-    const personId = req.params.id;
-    const personData = fetchPerson(personId);
-    res.render('profile', { person: personData })
+export const fetchPersonController = async function (req,res) {
+    // const personId = req.params.id;
+    // const personData = await fetchPerson(personId);
+    // res.render('profile', { person: personData })
+    let personId = req.params.id;
+    const personData = await fetchPerson(personId);
+    console.log(personData)
+    if (personData) {
+        res.render('profile', { person: personData });
+    } else {
+        res.send('Not authorized.');
+    }
 }
 
 export const createPersonFromController = function (req, res) {
