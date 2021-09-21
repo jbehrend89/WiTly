@@ -3,9 +3,13 @@ import bcrypt from 'bcrypt';
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import session from 'express-session';
+import connectPgSimple from 'connect-pg-simple';
+import dotenv from 'dotenv';
 import { pool } from './db.js';
 import peopleRouter from './routes/people.js';
 import userRouter from './routes/users.js';
+
+dotenv.config();
 
 const app = express();
 
@@ -15,8 +19,13 @@ app.use(express.json());
 
 app.use(
     session({
-        secret: 'averygoodsecret',
-        resave: true,
+        store: new (connectPgSimple(session))({
+            createTableIfMissing: true,
+            pool: pool,
+        }),
+        secret: process.env.COOKIE_SECRET,
+        resave: false,
+        cookie: { maxAge: 30 * 24 * 60 * 60 * 1000 },
         saveUninitialized: true,
     })
 );
