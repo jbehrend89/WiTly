@@ -17,8 +17,20 @@ export const fetchPeopleController = async function (req,res) {
     }
     const peopleData = await fetchPeople(name);
     if (peopleData) {
+        const SortedPeopleData = peopleData.sort(function(a,b){
+            var nameA = a.name.toUpperCase(); // ignore upper and lowercase
+            var nameB = b.name.toUpperCase(); // ignore upper and lowercase
+            if (nameA < nameB) {
+              return -1;
+            }
+            if (nameA > nameB) {
+              return 1;
+            }
+            // names must be equal
+            return 0;
+        });
         res.render('index', { 
-            people: peopleData,
+            people: SortedPeopleData,
             user: user, 
         });
     } else {
@@ -32,18 +44,42 @@ export const fetchPersonController = async function (req,res) {
     // const personId = req.params.id;
     // const personData = await fetchPerson(personId);
     // res.render('profile', { person: personData })
+    let user;
+    if (req.isAuthenticated()) {
+        user = {
+            id: req.user.rows[0].id,
+            username: req.user.rows[0].username,
+        };
+    } else {
+        user = null;
+    }
     let personId = req.params.id;
     const personData = await fetchPerson(personId);
     console.log(personData)
     if (personData) {
-        res.render('profile', { person: personData });
+        res.render('profile', { 
+            person: personData,
+            user: user, 
+        });
     } else {
         res.send('Not authorized.');
     }
 }
 
 export const createPersonFromController = function (req, res) {
-    res.render('newProfile')
+    let user;
+    if (req.isAuthenticated()) {
+        user = {
+            id: req.user.rows[0].id,
+            username: req.user.rows[0].username,
+        };
+    } else {
+        user = null;
+    }
+    res.render('newProfile', { 
+        user:user, 
+    });
+    // res.render('newProfile')
 }
 
 export const createPersonController = async function (req, res) {
@@ -54,7 +90,15 @@ export const createPersonController = async function (req, res) {
     form.append('bio', personData.bio);
     const fileStream = fs.createReadStream(req.file.path);
     form.append('photo', fileStream, req.file.originalname);
-
+    let user;
+    if (req.isAuthenticated()) {
+        user = {
+            id: req.user.rows[0].id,
+            username: req.user.rows[0].username,
+        };
+    } else {
+        user = null;
+    }
     let newPerson;
     try {
           newPerson = await createPerson(form);
@@ -62,7 +106,10 @@ export const createPersonController = async function (req, res) {
           console.log(err);
     }
     if (newPerson) {
-          res.render('profile', { person: newPerson });
+          res.render('profile', { 
+              person: newPerson,
+              user: user, 
+        });
     } else {
           res.send('Error.');
     }

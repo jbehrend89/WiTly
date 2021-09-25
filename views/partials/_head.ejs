@@ -8,4 +8,26 @@
         <meta name="author" content="your name" />
     </head>
     <body>
+        <header>
+            <div id="header-text">
+                <a id="header-link" href="/images/WITLY.gif">
+                    <h1><img id="header-gif" src="/images/WITLY.gif" alt="Women in Technology"></h1>
+                </a>
+            </div>
+            <div class="Navbar" id="TopNavbar">
+                <% if (user !== null) { %>
+                    <p>You are logged in as <%= user.username %></p>
+                    <% } %>
+                <% if (user !== null) { %>
+                <a href="/profile" class="publish"> Publish</a>
+                <a href="/logout" class="log_in_out">Logout</a>
+                <% } else { %>
+                <a href="/login" class="log_in_out">Login</a>
+                <a href="/create-account" class="create-account_button">Create Account</a>
+                <% } %>
+            </div>
+        </header>          
+    </body>
+</html>
+
 
