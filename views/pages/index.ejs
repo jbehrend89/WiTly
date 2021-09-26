@@ -11,19 +11,24 @@
     <body>
         <%- include("../partials/_head") -%>
         <% if (user !== null) { %>
-            <p>You are logged in as <%= user.username %></p>
+            <p id="welcome">Hi <%= user.username %>, you are now logged in!</p>
             <% } %>
             
-        <h1>Women in Tech</h1>
+        <!-- <h1>Women in Tech</h1> -->
 
         <form id="search-form" action="/" method="GET">
         <input name="name" id="name-query" type="text" />
         <input type="submit" value="Search" />
         </form>
 
+        <div class="row">
         <% people.forEach(person => { %>
-        <a href="/profile/<%= person.id %>"><p><%= person.name%></p></a>
+        <div>
+        <a id="index_name" href="/profile/<%= person.id %>"><p><%= person.name%></p></a>
+        <img id="index_pic" src="<%= person.photo %>" alt=<%= person.name %>>
+        </div> 
         <% }) %>
         <%- include("../partials/_footer") -%>
+        </div>
     </body>
 </html>

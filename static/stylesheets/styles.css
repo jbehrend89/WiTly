@@ -1,17 +1,22 @@
 html {
-    background-color: lightblue;
+    background-color: white;
+    font: 120% system-ui;
 }
 
 header {
     /* display: flex; */
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid #000;
+    /* border-bottom: 1px solid #000; */
+}
+
+h1 {
+    margin-bottom: 0;    
 }
 
 #header-gif{
-    width: 100vw;
-    height: 200px;
+    width: 100%;
+    /* height: 200px; */
     margin: 2px;
 }
 
@@ -28,7 +33,67 @@ header {
     font: 120% system-ui;
     text-align: center;
     padding: 0px 0px;
+    margin: 10px;
+    margin-top: 0;
 }
-    TopNavbar:hover {
-    font-weight: 900;
-    }
+
+footer {
+    color: #3590F3;
+}
+
+#footer_author {
+    text-align: center;
+}
+
+#index_name {
+    text-align: center;
+}
+
+
+#index_pic {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+}
+
+#index_pic img{
+    width: 100%;
+    height: auto;
+    object-fit: cover; 
+}
+
+.row {
+    /* display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 0 29%;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px; */
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+  }
+
+  /* links */
+a:link {
+    color: #3590F3;
+    text-decoration: none;
+  }
+    
+  /* mouse over link */
+  a:hover {
+    color: #C2BBF0;
+  }
+  
+
+  /* welcome message when logged in */
+  #welcome{
+      text-align: center;
+      font-weight: bold;
+      color: #3590F3;
+  }
