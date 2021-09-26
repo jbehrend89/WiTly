@@ -1,3 +1,34 @@
 html {
     background-color: lightblue;
 }
+
+header {
+    /* display: flex; */
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #000;
+}
+
+#header-gif{
+    width: 100vw;
+    height: 200px;
+    margin: 2px;
+}
+
+#TopNavbar {
+    /* flex-basis: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end; */
+    background-color: #F1E3F3;
+    color: #3590F3;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    font: 120% system-ui;
+    text-align: center;
+    padding: 0px 0px;
+}
+    TopNavbar:hover {
+    font-weight: 900;
+    }
