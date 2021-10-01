@@ -16,10 +16,10 @@
             
         <!-- <h1>Women in Tech</h1> -->
 
-        <form id="search-form" action="/" method="GET">
+        <!-- <form id="search-form" action="/" method="GET">
         <input name="name" id="name-query" type="text" />
         <input type="submit" value="Search" />
-        </form>
+        </form> -->
 
         <div class="row">
         <% people.forEach(person => { %>
@@ -28,7 +28,8 @@
         <img id="index_pic" src="<%= person.photo %>" alt=<%= person.name %>>
         </div> 
         <% }) %>
-        <%- include("../partials/_footer") -%>
+        
         </div>
+        <%- include("../partials/_footer") -%>
     </body>
 </html>

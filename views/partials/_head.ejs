@@ -21,9 +21,17 @@
                 <% if (user !== null) { %>
                 <a href="/profile" class="publish"> Publish</a>
                 <a href="/logout" class="log_in_out">Logout</a>
+                <form id="search-form" action="/" method="GET">
+                    <input name="name" id="name-query" type="text" />
+                    <input type="submit" value="Search" />
+                    </form>
                 <% } else { %>
                 <a href="/login" class="log_in_out">Login</a>
                 <a href="/create-account" class="create-account_button">Create Account</a>
+                <form id="search-form" action="/" method="GET">
+                    <input name="name" id="name-query" type="text" />
+                    <input type="submit" value="Search" />
+                    </form>
                 <% } %>
             </div>
         </header>          
